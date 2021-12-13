@@ -10,17 +10,23 @@
                 margin: 0;
                 overflow: hidden;
             }
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: middle;
+                background-color: #0c0c12;
+            }
         </style>
     </head>
 
     <body>
-        <canvas id="dogcanvas"></canvas>
+        <canvas id="dogcanvas" width="600" height="589"></canvas>
     </body>
 
     <script>
         function draw() {
-            canvas.width = document.body.clientWidth;
-            canvas.height = document.body.clientHeight;
+            //canvas.width = document.body.clientWidth;
+            //canvas.height = document.body.clientHeight;
 
             ctx.globalCompositeOperation = 'source-over';
             ctx.drawImage(dog, 0, 0, canvas.width, canvas.height);
