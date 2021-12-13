@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Color this dog</title>
+        <meta charset="UTF-8">
+        <style>
+            html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+
+    <body>
+        <canvas id="dogcanvas"></canvas>
+    </body>
+
+    <script>
+        function draw() {
+            canvas.width = document.body.clientWidth;
+            canvas.height = document.body.clientHeight;
+
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.drawImage(dog, 0, 0, canvas.width, canvas.height);
+            ctx.globalCompositeOperation = 'multiply';
+            ctx.fillStyle = color;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+        }
+
+        var color = `rgb( ${getRandomInt(256)}, ${getRandomInt(256)}, ${getRandomInt(256)})`;
+
+        var canvas = document.getElementById('dogcanvas');
+        var ctx = canvas.getContext('2d');
+        
+        var dog = new Image();
+        dog.addEventListener('load', draw, false);
+        window.addEventListener('resize', draw, false);
+        dog.src = 'thisdog.png';
+    </script>
+</html>
